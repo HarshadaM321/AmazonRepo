@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [PhaseSuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="PhaseOneTest(failed)">
+    <classes>
+      <class name="Atest.TestClass">
+        <methods>
+          <include name="loginToAmazon"/>
+          <include name="launchBrowser"/>
+          <include name="verifySearch"/>
+        </methods>
+      </class> <!-- Atest.TestClass -->
+    </classes>
+  </test> <!-- PhaseOneTest(failed) -->
+</suite> <!-- Failed suite [PhaseSuite] -->
