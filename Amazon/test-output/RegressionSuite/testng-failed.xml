@@ -7,8 +7,8 @@
       <class name="Atest.FirstClass">
         <methods>
           <include name="closeBrowser"/>
-          <include name="launchBrowser"/>
           <include name="initializePOM"/>
+          <include name="openBrowser"/>
           <include name="loginToAmazon"/>
           <include name="signOut"/>
           <include name="verifySearch"/>
@@ -22,8 +22,8 @@
       <class name="Atest.FirstClass">
         <methods>
           <include name="closeBrowser"/>
-          <include name="launchBrowser"/>
           <include name="initializePOM"/>
+          <include name="openBrowser"/>
           <include name="loginToAmazon"/>
           <include name="signOut"/>
           <include name="verifySearch"/>

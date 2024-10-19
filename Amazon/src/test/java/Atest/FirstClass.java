@@ -1,12 +1,11 @@
 package Atest;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
-
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.bidi.module.Browser;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.AfterClass;
@@ -17,9 +16,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-import com.sun.tools.javac.util.List;
-
+import Base.Browser;
+import Utils.Utility;
 import pages.CartDetailsPage;
 import pages.HomePage;
 import pages.ProductdetailsPage;
@@ -36,26 +34,16 @@ public class FirstClass extends Browser {
 		private CartDetailsPage cartDetailsPage;
 		private ProductdetailsPage productdetailsPage;
 	    private ArrayList<String> browserAddress;
+	    private String testID;
 	    
 	@Parameters ("browser")
 	
 	@BeforeTest
-	void launchBrowser(String expectedBrowser) {
-		
-		System.out.println(expectedBrowser);
+    void openBrowser(String expectedBrowser) {
 	
-		if(expectedBrowser.equals("Chrome"))
-		{
-	
-			}
-		if(expectedBrowser.equals("Edge"))
-		{
-			driver= new EdgeDriver();
-		}
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		
+		driver =launchBowser(expectedBrowser);
 	}
+	
 	@BeforeClass
 	void initializePOM() {
 	driver = new ChromeDriver();
@@ -79,7 +67,9 @@ public class FirstClass extends Browser {
 	}
 	@Test 
 	void verifySearch() throws InterruptedException {
-    homepage.enterProductName("mobile");
+		testID="TC01";
+		
+	homepage.enterProductName("mobile");
 	Thread.sleep(3000); 
 	homepage.clickOnFirstsuggessionOption();
 	homepage.clickOnsearchtButton();
@@ -107,10 +97,11 @@ public class FirstClass extends Browser {
 	}
 
 	@AfterMethod
-	void signOut() {
+	void signOut() throws IOException {
     driver.close();
    driver.switchTo().window(browserAddress.get(0));
    homepage.clickOnsignoutButton();
+   Utility.captureScreenShot(driver, testID);
 	}
 	
 	
